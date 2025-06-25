@@ -1,4 +1,7 @@
+import sys
 import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 import pandas as pd
 import pytest
 from unittest import mock
@@ -53,3 +56,20 @@ def test_add_function(mock_desc, mock_cat, mock_amt, mock_date, tmp_path):
     df = pd.read_csv(test_csv)
     assert len(df) == 1
     assert df.iloc[0]['Category'] == "Food"
+
+def test_remove_entry(tmp_path):
+    test_csv = tmp_path / "test_finance_data.csv"
+    FinanceCSV.csv_file = str(test_csv)
+    FinanceCSV.initialize_csv()
+    # Add two entries
+    FinanceCSV.add_entry("01-01-2024", 100, "Income", "Salary")
+    FinanceCSV.add_entry("02-01-2024", 50, "Expense", "Lunch")
+    df = pd.read_csv(test_csv)
+    # Remove the expense (row with Description == 'Lunch')
+    idx = df[df['Description'] == 'Lunch'].index
+    assert not idx.empty
+    df = df.drop(idx[0])
+    df.to_csv(test_csv, index=False)
+    df2 = pd.read_csv(test_csv)
+    assert len(df2) == 1
+    assert 'Lunch' not in df2['Description'].values
