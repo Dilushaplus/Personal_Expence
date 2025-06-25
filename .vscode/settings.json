@@ -1,0 +1,14 @@
+{
+    "python.envFile": "${workspaceFolder}/.env",
+    "python.pipenvPath": "${workspaceFolder}/.venv",
+    "pytrhon.,defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python3",
+
+    "python.terminal.activateEnvironment": true,
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+
+}
