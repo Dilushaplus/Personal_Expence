@@ -3,7 +3,7 @@ name = "demo_2"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.8,<3.12"
+requires-python = ">=3.8,<3.11"
 dependencies = [
     "matplotlib>=3.10.3",
     "pandas>=2.3.0",
