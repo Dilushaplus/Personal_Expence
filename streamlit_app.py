@@ -18,7 +18,7 @@ initialize_csv()
 # Add new transaction
 with st.form("Add Transaction"):
     date = st.date_input("Date")
-    amount = st.number_input("Amount", min_value=0.01, step=0.01)
+    amount = st.number_input("Amount")
     category = st.selectbox("Category", ["Income", "Expense"])
     description = st.text_input("Description")
     submitted = st.form_submit_button("Add")
